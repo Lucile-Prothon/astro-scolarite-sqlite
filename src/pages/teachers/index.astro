@@ -1,0 +1,6 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import db from "../../lib/db";
+const rows=db.prepare("SELECT * FROM teachers").all();
+---
+<Layout title="Enseignants"><h1>Enseignants</h1><table><thead><tr><th>Nom</th><th>Matière</th></tr></thead><tbody>{rows.map(r=><tr><td>{r.name}</td><td>{r.matter}</td></tr>)}</tbody></table></Layout>
